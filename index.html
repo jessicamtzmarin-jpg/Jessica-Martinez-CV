@@ -25,6 +25,7 @@
       --font-main: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
+   
     body {
       font-family: var(--font-main);
       background: var(--bg-gradient);
@@ -227,6 +228,29 @@
   </style>
 </head>
 
+
+<script>
+  const tabs = document.querySelectorAll(".tab");
+  const panels = document.querySelectorAll(".tab-panel");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      const targetId = tab.getAttribute("data-target");
+
+      panels.forEach(panel => {
+        if (panel.id === targetId) {
+          panel.classList.remove("hidden");
+        } else {
+          panel.classList.add("hidden");
+        }
+      });
+    });
+  });
+</script>
+  
 <body>
   <main class="page">
 
