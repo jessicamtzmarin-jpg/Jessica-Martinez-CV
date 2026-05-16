@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jessica Vanessa Martinez | Business Analytics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- NEW STYLE APPLIED HERE -->
+  <style>
+    :root {
+      --bg: #0A1A2F;
+      --bg-gradient: radial-gradient(circle at top, #102544 0%, #0A1A2F 45%, #050B14 100%);
+      --card: #112033;
+      --accent: #D4A857;
+      --accent-soft: rgba(212, 168, 87, 0.18);
+      --text: #FFFFFF;
+      --muted: #C9CEDA;
+      --border: rgba(255, 255, 255, 0.08);
+      --chip: rgba(255, 255, 255, 0.06);
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --transition: 0.25s ease;
+      --font-main: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: var(--bg-gradient);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 32px auto 48px;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: linear-gradient(145deg, #13263D, #0E1A2B);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 22px 24px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(212, 168, 87, 0.12), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .name {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+    }
+
+    .title {
+      font-size: 1rem;
+      color: var(--muted);
+      letter-spacing: 0.3px;
+    }
+
+    .tagline {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .chip {
+      background: var(--chip);
+      border-radius: var(--radius-pill);
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .chip--accent {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(212, 168, 87, 0.4);
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      transition: var(--transition);
+    }
+
+    .item:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      background: rgba(212, 168, 87, 0.08);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55);
+    }
+
+    .item-role {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .item-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .item-org {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .item-bullets {
+      margin-left: 16px;
+      margin-top: 4px;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--muted);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .pill--strong {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(212, 168, 87, 0.4);
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .skill {
+      font-size: 0.8rem;
+      padding: 4px 9px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--muted);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .tab {
+      font-size: 0.8rem;
+      padding: 5px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(10, 14, 30, 0.8);
+      color: var(--muted);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .tab.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: rgba(212, 168, 87, 0.7);
+      font-weight: 600;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <!-- LEFT COLUMN -->
+    <section class="card">
+
+      <!-- HEADER WITH PHOTO -->
+      <header class="card-header" style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px;">
+
+        <!-- LEFT SIDE: TEXT -->
+        <div class="identity">
+          <div class="name">Jessica Vanessa Martinez</div>
+          <div class="title">Business Analytics & Risk | Data‑Driven Leadership</div>
+          <p class="tagline">
+            Business Analytics professional with 9+ years in risk analysis, sales, and team leadership across
+            financial and retail sectors. Skilled at turning data into decisions and building high‑performance teams.
+          </p>
+
+          <div class="chips">
+            <span class="chip chip--accent">MSc Business Analytics – Trinity College Dublin</span>
+            <span class="chip">Higher Diploma in Data Analytics</span>
+            <span class="chip">Business Degree – UNAM</span>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE: PHOTO (LinkedIn Premium Style) -->
+        <div style="display:flex; align-items:center; justify-content:center;">
+          <img src="profile-photo.png"
+               alt="Jessica Vanessa Martinez"
+               style="
+                 width:150px;
+                 height:150px;
+                 border-radius:50%;
+                 object-fit:cover;
+                 border:4px solid rgba(212,168,87,0.85);
+                 box-shadow:0 12px 35px rgba(0,0,0,0.55);
+                 transition:transform 0.35s ease, box-shadow 0.35s ease;
+               "
+               onmouseover="this.style.transform='scale(1.06)'; this.style.boxShadow='0 18px 45px rgba(212,168,87,0.35)';"
+               onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.55)';"
+          >
+        </div>
+
+      </header>
+
+      <!-- EXPERIENCE -->
+      <section class="section">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+
+          <article class="item">
+            <div class="item-header">
+              <div class="item-role">Pension Consultant – Sales Advisor</div>
+              <div class="item-meta">Mar 2021 – Apr 2022 · Mexico City</div>
+            </div>
+            <div class="item-org">Retirement Fund Administration</div>
+            <ul class="item-bullets">
+              <li>Developed and managed a client portfolio, advising on Mexican retirement law and withdrawal procedures.</li>
+              <li>Ranked among the top 50 consultants out of 1,000+ by consistently exceeding KPIs.</li>
+              <li>Achieved the 2nd highest salary scheme within 8 months.</li>
+              <li>Trained and onboarded new team members, closing 3 deals during training.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill pill--strong">Sales Strategy</span>
+              <span class="pill">Client Advisory</span>
+              <span class="pill">KPI‑Driven Performance</span>
+            </div>
+          </article>
+
+          <article class="item">
+            <div class="item-header">
+              <div class="item-role">Sales Manager</div>
+              <div class="item-meta">Aug 2015 – Feb 2020 · Mexico</div>
+            </div>
+            <div class="item-org">Fantasías Miguel – Retail</div>
+            <ul class="item-bullets">
+              <li>Managed operations, finance, cash handling, and customer service.</li>
+              <li>Led recruitment, training, and development of new employees.</li>
+              <li>Used statistics to analyze sales data and forecast demand.</li>
+              <li>Increased quarterly revenue by 25% and improved inventory management.</li>
+              <li>Contributed to recognition as one of the best places to work in Mexico.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill pill--strong">Team Leadership</span>
+              <span class="pill">Sales Forecasting</span>
+              <span class="pill">Operational Excellence</span>
+            </div>
+          </article>
+
+          <article class="item">
+            <div class="item-header">
+              <div class="item-role">Fraud Risk Analyst</div>
+              <div class="item-meta">Feb 2012 – Aug 2015 · Mexico</div>
+            </div>
+            <div class="item-org">Banamex – Financial Sector</div>
+            <ul class="item-bullets">
+              <li>Analyzed high‑risk accounts to prevent financial loss and unauthorized access.</li>
+              <li>Ensured compliance with governance and legal standards.</li>
+              <li>Conducted account validations and fraud investigations.</li>
+              <li>Led a team of 7, improving productivity by 15%.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill pill--strong">Fraud Risk Analysis</span>
+              <span class="pill">Governance & Compliance</span>
+              <span class="pill">Team Management</span>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section class="section">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+
+          <article class="item">
+            <div class="item-header">
+              <div class="item-role">MSc Business Analytics</div>
+              <div class="item-meta">Sep 2025 – Sep 2026 · Trinity College Dublin</div>
+            </div>
+            <ul class="item-bullets">
+              <li>Focus: mathematical foundations, data science, analytics, database analysis.</li>
+              <li>Programming in Python and R; visualization with SQL, Tableau, SPSS.</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill pill--strong">Business Analytics</span>
+              <span class="pill">Python & R</span>
+              <span class="pill">SQL & Tableau</span>
+            </div>
+          </article>
+
+          <article class="item">
+            <div class="item-header">
+              <div class="item-role">Higher Diploma in Data Analytics</div>
+              <div class="item-meta">Aug 2023 – Aug 2024 · City Colleges</div>
+            </div>
+            <ul class="item-bullets">
+              <li>First Class in Data Science.</li>
+              <li>Strong foundations in statistics and applied analytics.</li>
+            </ul>
+          </article>
+
+          <article class="item">
+            <div class="item-header">
+              <div class="item-role">Bachelor’s Degree in Business</div>
+              <div class="item-meta">Aug 2007 – Apr 2012 · UNAM, Mexico</div>
+            </div>
+            <ul class="item-bullets">
+              <li>Average grade: 8.83/10.</li>
+              <li>Solid foundation in business, finance, and management.</li>
+            </ul>
+          </article>
+
+        </div>
+      </section>
+    </section>
+
+    <!-- RIGHT COLUMN -->
+    <aside class="card">
+      <div class="section">
+        <h2 class="section-title">Interactive Profile</h2>
+
+        <div class="tabs">
+          <button class="tab active" data-target="tab-skills">Skills</button>
+          <button class="tab" data-target="tab-focus">Career Focus</button>
+          <button class="tab" data-target="tab-summary">Summary</button>
+        </div>
+
+        <!-- SKILLS TAB -->
+        <div id="tab-skills" class="tab-panel">
+          <h3 style="font-size:0.95rem;margin-bottom:4px;">Core Technical Skills</h3>
+          <div class="skills-grid">
+            <span class="skill">Python</span>
+            <span class="skill">R</span>
+            <span class="skill">SQL</span>
+            <span class="skill">SPSS</span>
+            <span class="skill">Tableau</span>
+            <span class="skill">Excel</span>
+            <span class="skill">VS Code</span>
+            <span class="skill">Data Science</span>
+            <span class="skill">Reporting</span>
+          </div>
+
+          <h3 style="font-size:0.95rem;margin:10px 0 4px;">Leadership & Business Skills</h3>
+          <div class="skills-grid">
+            <span class="skill">Team Management</span>
+            <span class="skill">Talent Development</span>
+            <span class="skill">KPI‑Driven Performance</span>
+            <span class="skill">Decision‑Making</span>
+            <span class="skill">Client Advisory</span>
+            <span class="skill">Sales Strategy</span>
+            <span class="skill">Risk Analysis</span>
+          </div>
+        </div>
+
+        <!-- CAREER FOCUS TAB -->
+        <div id="tab-focus" class="tab-panel hidden">
+          <h3 style="font-size:0.95rem;margin-bottom:4px;">Target Roles</h3>
+          <ul class="hobby-list">
+            <li>Data Analyst / Business Data Analyst</li>
+            <li>Fraud Risk Analyst / Financial Crime Analyst</li>
+            <li>Business Intelligence Analyst</li>
+            <li>Sales & Revenue Operations Analyst</li>
+            <li>People Analytics</li>
+          </ul>
+        </div>
+
+        <!-- SUMMARY TAB -->
+        <div id="tab-summary" class="tab-panel hidden">
+          <p style="font-size:0.88rem;color:var(--muted);">
+            I combine <strong>data analytics</strong>, <strong>risk expertise</strong>, and <strong>people leadership</strong> to drive measurable impact.
+            My background spans fraud risk in banking, sales management in retail, and pension consulting—now strengthened by advanced analytics training in Ireland.
+          </p>
+        </div>
+      </div>
+
+      <!-- LANGUAGES -->
+      <section class="section">
+        <h2 class="section-title">Languages</h2>
+        <ul class="lang-list">
+          <li><strong>Spanish:</strong> Native</li>
+          <li><strong>English:</strong> C1</li>
+          <li><strong>German:</strong> A1</li>
+        </ul>
+      </section>
+
+      <!--
