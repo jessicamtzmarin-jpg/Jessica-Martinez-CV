@@ -6,6 +6,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- NEW STYLE APPLIED HERE -->
+  .tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 16px;
+  background: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  transition: all 0.25s ease;
+}
+
+.tab:hover {
+  background: #f3f3f3;
+}
+
+.tab.active {
+  background: #4a90e2;
+  color: white;
+  border-color: #4a90e2;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.tab-panel {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  animation: fadeIn 0.3s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
   <style>
     :root {
       --bg: #0A1A2F;
@@ -256,6 +302,27 @@
 
     <!-- LEFT COLUMN -->
     <section class="card">
+      <div class="tabs">
+  <button class="tab active" data-target="panel-experience">Experience</button>
+  <button class="tab" data-target="panel-education">Education</button>
+  <button class="tab" data-target="panel-skills">Skills</button>
+</div>
+
+<div id="panel-experience" class="tab-panel">
+  <h2>Experience</h2>
+  <p>Agrega aquí tu experiencia profesional.</p>
+</div>
+
+<div id="panel-education" class="tab-panel hidden">
+  <h2>Education</h2>
+  <p>Agrega aquí tu formación académica.</p>
+</div>
+
+<div id="panel-skills" class="tab-panel hidden">
+  <h2>Skills</h2>
+  <p>Agrega aquí tus habilidades.</p>
+</div>
+
 
       <!-- HEADER WITH PHOTO -->
       <header class="card-header" style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px;">
